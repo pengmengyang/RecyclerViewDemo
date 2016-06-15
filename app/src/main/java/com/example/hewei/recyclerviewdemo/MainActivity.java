@@ -34,5 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private void openOterActivity(Class<?> cls){
         Intent intent=new Intent(this,cls);
         startActivity(intent);
+
+
     }
 }
