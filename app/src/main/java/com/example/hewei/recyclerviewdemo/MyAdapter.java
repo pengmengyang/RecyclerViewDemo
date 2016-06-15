@@ -20,12 +20,12 @@ import java.util.List;
  * 适配器
  */
 
-public class MyAdapter extends RecyclerView.Adapter{
+class MyAdapter extends RecyclerView.Adapter{
 
     private List<String> list;
     private Context context;
 
-    public MyAdapter(List<String> list,Context context){
+    MyAdapter(List<String> list, Context context){
 
         this.list=list;
         this.context=context;
@@ -35,11 +35,11 @@ public class MyAdapter extends RecyclerView.Adapter{
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         /**绑定布局*/
-        View view= LayoutInflater.from(context).inflate(R.layout.recyclerview_item,null);
+        View view= LayoutInflater.from(context).inflate(R.layout.recyclerview_item,viewGroup,false);
         /**初始化布局的高度和宽度*/
         LinearLayout.LayoutParams ll=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(ll);
-        return new MyViewHolder(view);
+        return new MyViewHolder(view,myItemClickListener,myItemLongClickListener);
     }
 
     @Override
@@ -56,14 +56,62 @@ public class MyAdapter extends RecyclerView.Adapter{
     public int getItemCount() {
         return list.size();
     }
+    /**为Item设置监听事件*/
+    private class  MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener{
 
-    class  MyViewHolder extends RecyclerView.ViewHolder {
+        TextView id_num;
 
-        public TextView id_num;
 
-        public MyViewHolder(View itemView) {
+        MyViewHolder(View itemView, MyItemClickListener myItemClickListener, MyItemLongClickListener myItemLongClickListener) {
             super(itemView);
             id_num= (TextView) itemView.findViewById(R.id.id_num);
+            MyAdapter.myItemClickListener=myItemClickListener;
+            MyAdapter.myItemLongClickListener=myItemLongClickListener;
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            if(myItemClickListener!=null){
+                myItemClickListener.onItemClick(v,getPosition());
+            }
+
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            if(myItemLongClickListener!=null){
+                myItemLongClickListener.onItemLongClickListener(v,getPosition());
+            }
+            return true;
         }
     }
+
+    /**
+     * 设置Item点击监听
+     * @param listener
+     */
+    void setOnItemClickListener(MyItemClickListener listener){
+        MyAdapter.myItemClickListener = listener;
+    }
+
+    void setOnItemLongClickListener(MyItemLongClickListener listener){
+        MyAdapter.myItemLongClickListener = listener;
+    }
+
+    /**接口回调*/
+    /**Item点击*/
+    interface MyItemClickListener{
+        void onItemClick(View view, int position);
+    }
+    /**Item长按*/
+    interface MyItemLongClickListener{
+        void onItemLongClickListener(View view, int positon);
+    }
+    /**声明接口属性*/
+    private static MyItemClickListener myItemClickListener;
+    private static MyItemLongClickListener myItemLongClickListener;
+
 }
