@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:id="@+id/activity_main"
     android:layout_width="match_parent" android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <android.support.v7.widget.RecyclerView
+    <Button
+        android:text="@string/recyclerviewlist"
+        android:id="@+id/btn_recyclerview_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/id_recyclerview"
-        />
+        android:layout_height="45dp" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:id="@+id/btn_recyclerview_grid"
+        android:text="@string/recyclerviewgrid"/>
 
-</RelativeLayout>
+
+</LinearLayout>

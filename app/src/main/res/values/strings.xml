@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RecyclerViewDemo</string>
+    <string name="recyclerviewlist">RecyclerViewList排列</string>
+    <string name="recyclerviewgrid">RecyclerViewGrid排列</string>
 </resources>
