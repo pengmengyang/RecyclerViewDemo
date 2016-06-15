@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".RecyclerViewListActivity" />
-        <activity android:name=".RecyclerViewGridActivity"></activity>
+        <activity android:name=".RecyclerViewGridActivity" />
+        <activity android:name=".RecyclerViewStagereGridActivity"></activity>
     </application>
 
 </manifest>

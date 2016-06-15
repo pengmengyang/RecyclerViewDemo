@@ -16,6 +16,11 @@
         android:layout_height="45dp"
         android:id="@+id/btn_recyclerview_grid"
         android:text="@string/recyclerviewgrid"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:id="@+id/btn_recyclerview_stagere_grid"
+        android:text="@string/stagere"/>
 
 
 </LinearLayout>

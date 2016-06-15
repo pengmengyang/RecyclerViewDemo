@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.btn_recyclerview_list, R.id.btn_recyclerview_grid})
+    @OnClick({R.id.btn_recyclerview_list, R.id.btn_recyclerview_grid,R.id.btn_recyclerview_stagere_grid})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_recyclerview_list:
@@ -26,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_recyclerview_grid:
                 openOterActivity(RecyclerViewGridActivity.class);
+                break;
+            case R.id.btn_recyclerview_stagere_grid:
+                openOterActivity(RecyclerViewStagereGridActivity.class);
                 break;
         }
     }
